@@ -75,4 +75,4 @@ Rejection_rate <- function(x){
 reject_rate <- lapply(result_list, Rejection_rate)
 reject_rate <- do.call("rbind.data.frame", reject_rate)
 reject_rate$Censoring <- TRUE
-write.csv(reject_rate, "reject_rate_censoring.csv", row.names = FALSE)
+write.csv(reject_rate, "Figure1&7_reject_rate_censoring.csv", row.names = FALSE)

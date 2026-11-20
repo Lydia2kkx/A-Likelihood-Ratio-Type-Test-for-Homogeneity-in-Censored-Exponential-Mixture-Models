@@ -2,6 +2,14 @@ library(ggplot2)
 
 dat_censoring <- read.csv("Figure1&7_reject_rate_censoring.csv")
 dat_nocensoring <- read.csv("Figure1&7_reject_rate_nocensoring.csv")
+
+###MCSE of the power estimates
+M <- 10000
+dat_censoring$MCSE <- sqrt(dat_censoring$Rejection_rate * (1 - dat_censoring$Rejection_rate) / M)
+max(dat_censoring$MCSE)
+dat_nocensoring$MCSE <- sqrt(dat_nocensoring$Rejection_rate * (1 - dat_nocensoring$Rejection_rate) / M)
+max(dat_nocensoring$MCSE)
+
 dat <- rbind(dat_censoring, dat_nocensoring)
 colnames(dat)[1] <- "n"
 colnames(dat)
